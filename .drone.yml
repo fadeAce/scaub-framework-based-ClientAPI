@@ -1,0 +1,11 @@
+cache:
+  mount:
+    - /drone/repository
+build:
+  image: docker.finogeeks.club/build/maven
+  pull: true
+  commands:
+    - mvn deploy -U
+  when:
+    event: push
+    branch: master

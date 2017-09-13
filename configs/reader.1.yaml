@@ -1,0 +1,10 @@
+log:
+  time: true
+  debug: false
+  colors: true
+  pid: true
+depends:
+  - name: "loader"
+    instance: "1"
+required_topics:
+  - rds_repo

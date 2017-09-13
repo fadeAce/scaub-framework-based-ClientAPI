@@ -1,0 +1,10 @@
+log:
+  time: true
+  debug: true
+  colors: true
+  pid: true
+topic_configs:
+  order:
+    template: |
+      order.{{.GetAccount}}.{{.GetSymbol}}
+    format: FIX40

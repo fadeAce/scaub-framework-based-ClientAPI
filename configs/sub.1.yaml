@@ -1,0 +1,5 @@
+depends:
+  - name: "pub"
+    instance: "1"
+required_topics:
+  - order

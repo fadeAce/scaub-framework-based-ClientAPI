@@ -1,0 +1,39 @@
+base_depends:
+  - name: monitor
+    instance: "1"
+  - name: cache
+    instance: "1"
+base_topic_configs:
+  plasmon_heartbeat:
+    template: |
+      plasmon_hb.{{.GetServer}}>
+    format: PLASMON
+  plasmon_status:
+    template: |
+      plasmon_status.{{.GetServer}}>
+    format: PLASMON
+  plasmon_report:
+    template: |
+      plasmon_report.{{.GetServer}}>
+    format: PLASMON
+  plasmon_query:
+    template: |
+      plasmon_query.{{.GetTopic}}
+    format: PLASMON
+  plasmon_push_config:
+    template: |
+      plasmon_push_config.{{.GetServer}}>
+    format: PLASMON
+  plasmon_topic:
+    template: |
+      plasmon_topic.{{.GetTopic}}
+    format: PLASMON
+  plasmon_response:
+    template: |
+      plasmon_response.{{.GetSenderCompID}}
+    format: PLASMON
+  plasmon_control:
+    template: |
+      plasmon_control.{{.GetServer}}
+    format: PLASMON
+connector: nats://123.207.115.95:4222

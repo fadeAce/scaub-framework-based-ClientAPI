@@ -1,0 +1,5 @@
+depends:
+  - name: "rep"
+    instance: "1"
+required_topics:
+  - test_req

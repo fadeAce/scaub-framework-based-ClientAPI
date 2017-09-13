@@ -1,0 +1,61 @@
+<fix major='1' type='PLASMON' servicepack='0' minor='0'>
+    <header>
+        <field name='BeginString' required='Y' />
+        <field name='BodyLength' required='Y' />
+        <field name='MsgType' required='Y' />
+        <field name='SenderCompID' required='Y' />
+        <field name='TargetCompID' required='Y' />
+        <field name='MsgSeqNum' required='Y' />
+        <field name='SenderSubID' required='N' />
+        <field name='TargetSubID' required='N' />
+        <field name='SendingTime' required='Y' />
+    </header>
+    <messages>
+        <message name='Query' msgcat='app' msgtype='Q'>
+            <field name="PlaceHolder" required='N' />
+        </message>
+        <message name='Heartbeat' msgcat='app' msgtype='HB'>
+            <field name="PlaceHolder" required='N' />
+        </message>
+        <message name='Status' msgcat='app' msgtype='STA'>
+            <field name="ServerStatus" required='N' />
+        </message>
+        <message name='QueryMark' msgcat='app' msgtype='QM'>
+            <field name="MarkType" required='N' />
+        </message>
+    </messages>
+    <trailer>
+        <field name='SignatureLength' required='N' />
+        <field name='Signature' required='N' />
+        <field name='CheckSum' required='Y' />
+    </trailer>
+    <components />
+    <fields>
+        <field number='8' name='BeginString' type='CHAR' />
+        <field number='9' name='BodyLength' type='INT' />
+        <field number='10' name='CheckSum' type='CHAR' />
+        <field number='34' name='MsgSeqNum' type='SEQNUM' />
+        <field number='35' name='MsgType' type='STRING'>
+            <value enum='Q' description='QUERY' />
+            <value enum='STA' description='STATUS' />
+            <value enum='HB' description='HEARTBEAT' />
+            <value enum='QM' description='QUERYMARK' />
+        </field>
+        <field number='49' name='SenderCompID' type='CHAR' />
+        <field number='50' name='SenderSubID' type='CHAR' />
+        <field number='52' name='SendingTime' type='UTCTIMESTAMP' />
+        <field number='56' name='TargetCompID' type='STRING' />
+        <field number='57' name='TargetSubID' type='STRING' />
+        <field number='89' name='Signature' type='DATA' />
+        <field number='93' name='SignatureLength' type='LENGTH' />
+        <field number='20000' name='ServerStatus' type='CHAR'>
+            <value enum='0' description='DOWN' />
+            <value enum='1' description='UP' />
+        </field>
+        <field number='20001' name='MarkType' type='CHAR'>
+            <value enum='0' description='START' />
+            <value enum='1' description='END' />
+        </field>
+        <field number='55555' name='PlaceHolder' type='CHAR' />
+    </fields>
+</fix>

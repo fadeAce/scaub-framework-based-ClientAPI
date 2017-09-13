@@ -1,0 +1,5 @@
+topic_configs:
+  test_req:
+    template: |
+      test_req
+    format: PLASMON

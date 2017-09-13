@@ -1,0 +1,14 @@
+log:
+  time: true
+  debug: true
+  colors: true
+  pid: true
+topic_configs:
+  logon:
+    template: |
+      Login
+    format: FIX50
+  logonresp:
+      template: |
+        LogonResp
+      format: FIX50

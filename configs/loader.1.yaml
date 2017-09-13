@@ -1,0 +1,28 @@
+#log:
+#  time: true
+#  debug: true
+#  colors: true
+#  pid: true
+#topic_configs:
+#  sourceproductmessage:
+#    template: |
+#      sourceproductmessage.{{.GetInstrumentClass}}
+#    format: FIX50
+log:
+  time: true
+  debug: true
+  colors: true
+  pid: true
+topic_configs:
+  rds_repo:
+    template: |
+      rds_repo.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+    format: FIX50
+  rds_futures:
+    template: |
+      rds_futures.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+    format: FIX50
+  rds_bond:
+    template: |
+      rds_bond.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetInstrumentSubClass2}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+    format: FIX50

@@ -1,0 +1,3 @@
+[submodule "common_configs"]
+	path = common_configs
+	url = https://git.finogeeks.club/plasmon/configs
