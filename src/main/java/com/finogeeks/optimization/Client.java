@@ -1,10 +1,10 @@
 /**
  * Created by teril on 2017/7/5.feedback at zbyzhengzong@outlook.com
  */
-package com.finogeeks.execute;
-import com.finogeeks.FICC;
-import com.finogeeks.handler.MessageHandler;
-import com.finogeeks.model.Subscription;
+package com.finogeeks.optimization;
+import com.finogeeks.optimization.FICC;
+import com.finogeeks.kernal.handler.calback.MessageHandler;
+import com.finogeeks.kernal.model.Subscription;
 
 public class Client {
 
@@ -48,7 +48,7 @@ public class Client {
     }
 
     //subscribe
-    public Subscription subscribe(String topic,String criteria,MessageHandler handler){
+    public Subscription subscribe(String topic, String criteria, MessageHandler handler){
         Subscribe sub = new Subscribe(topic,criteria,handler);
         //create msg one time
         int handle = clientCore.CreateSubscription(topic,criteria,clientseq);

@@ -1,6 +1,6 @@
-package com.finogeeks.model;
+package com.finogeeks.kernal.model;
 
-import com.finogeeks.execute.Client;
+import com.finogeeks.optimization.Client;
 
 /**
  * Created by teril on 2017/8/21.

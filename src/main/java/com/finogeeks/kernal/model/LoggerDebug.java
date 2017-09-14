@@ -1,4 +1,4 @@
-package com.finogeeks.model;
+package com.finogeeks.kernal.model;
 
 /**
  * Created by teril on 2017/8/22.

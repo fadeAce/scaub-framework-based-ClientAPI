@@ -1,7 +1,7 @@
 /**
  * Created by finogeeks.teril on 2017/7/5. do feedback at zbyzhengzong@outlook.com
  */
-package com.finogeeks;
+package com.finogeeks.optimization;
 import com.sun.jna.*;
 import java.util.*;
 

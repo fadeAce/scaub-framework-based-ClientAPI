@@ -1,6 +1,4 @@
-import com.finogeeks.handler.MessageHandler;
-import java.util.HashMap;
-import java.util.Map;
+import com.finogeeks.kernal.handler.calback.MessageHandler;
 
 /**
  * Created by teril on 2017/7/6.
