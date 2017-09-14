@@ -5,16 +5,18 @@ package com.finogeeks.optimization.export;
 
 import com.finogeeks.kernal.pattern.def.PatternRouter;
 import com.finogeeks.kernal.pattern.list.PatternMulti;
+import com.finogeeks.optimization.raw.ClientCore;
 
-public class Client{
+public class Client extends ClientCore {
 
     //two main element to keep it unique
     private String name;
     private String instance;
 
-    // only support defined at the period Client Initializing
+    // only support what is defined at the period Client Initializing
     private PatternRouter patternRouter;
 
+    //initializing
     public Client(String name, String instance){
         setName(name);
         setInstance(instance);
@@ -22,11 +24,17 @@ public class Client{
         setPatternRouter(new PatternMulti());
     }
 
+    // public safety packaging
     public PatternRouter getPatternRouter() {
         return patternRouter;
     }
 
-    public void setPatternRouter(PatternRouter patternRouter) {
+    public String getInstance() {
+        return instance;
+    }
+
+    // private keeper
+    private void setPatternRouter(PatternRouter patternRouter) {
         this.patternRouter = patternRouter;
     }
 
@@ -38,11 +46,7 @@ public class Client{
         this.name = name;
     }
 
-    public String getInstance() {
-        return instance;
-    }
-
-    public void setInstance(String instance) {
+    private void setInstance(String instance) {
         this.instance = instance;
     }
 }

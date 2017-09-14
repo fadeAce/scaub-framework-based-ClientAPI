@@ -1,12 +1,15 @@
 package com.finogeeks.kernal.model;
 
+import com.finogeeks.kernal.model.frame.BaseTag;
+import com.finogeeks.kernal.model.frame.GenaralSpec;
+import com.finogeeks.kernal.model.frame.Phase;
 import com.finogeeks.optimization.Client;
 
 /**
  * Created by teril on 2017/8/21.
  * sub subquery
  */
-public class Subscription {
+public class Subscription implements GenaralSpec,BaseTag{
     //int:1 querysub 0:sub
     private int type;
     private int subSeq;
@@ -78,5 +81,10 @@ public class Subscription {
 
     public void setQuerysubscribe(Client.QueryAndSubscribe querysubscribe) {
         this.querysubscribe = querysubscribe;
+    }
+
+    @Override
+    public Phase getPhase() {
+        return Phase.PHASE_MODEL;
     }
 }
