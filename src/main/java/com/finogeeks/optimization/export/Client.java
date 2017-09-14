@@ -3,6 +3,7 @@
  */
 package com.finogeeks.optimization.export;
 
+import com.finogeeks.kernal.model.frame.Pattern;
 import com.finogeeks.kernal.pattern.def.PatternRouter;
 import com.finogeeks.kernal.pattern.list.PatternMulti;
 import com.finogeeks.optimization.raw.ClientCore;
@@ -15,13 +16,20 @@ public class Client extends ClientCore {
 
     // only support what is defined at the period Client Initializing
     private PatternRouter patternRouter;
+    private Pattern pattern;
+
+    //tag showing whether initialized
+    private boolean origin = false;
 
     //initializing
     public Client(String name, String instance){
         setName(name);
         setInstance(instance);
-        /* set default pattern as multiThread mode */
-        setPatternRouter(new PatternMulti());
+    }
+    public Client(String name, String instance,Pattern pattern){
+        setName(name);
+        setInstance(instance);
+        setPattern(Pattern.PATTERN_MULTI);
     }
 
     // public safety packaging
@@ -48,5 +56,21 @@ public class Client extends ClientCore {
 
     private void setInstance(String instance) {
         this.instance = instance;
+    }
+
+    private boolean isOrigin() {
+        return origin;
+    }
+
+    private void setOrigin(boolean origin) {
+        this.origin = origin;
+    }
+
+    private Pattern getPattern() {
+        return pattern;
+    }
+
+    private void setPattern(Pattern pattern) {
+        this.pattern = pattern;
     }
 }

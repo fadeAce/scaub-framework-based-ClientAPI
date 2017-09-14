@@ -14,6 +14,8 @@ public class PatternMulti implements PatternRouter,BaseTag {
         return Phase.PHASE_PATTERN;
     }
 
+    @Override
+    public void pin() {
 
-
+    }
 }

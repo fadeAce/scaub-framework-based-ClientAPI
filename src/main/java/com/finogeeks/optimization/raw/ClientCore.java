@@ -8,14 +8,14 @@ import com.finogeeks.kernal.model.frame.GenaralSpec;
 /**
  * Created by teril on 2017/9/14.
  */
-public class ClientCore implements CoreMethod {
+public abstract class ClientCore implements CoreMethod {
 /**
  * Extremely important core code for Client API form .
  */
     @Override
-    public GenaralSpec publish(String topic, String message) {
+    public GenaralSpec publish(String topic, String message){
         return null;
-    }
+    };
 
     @Override
     public Subscription subscribe(String topic, String criteria, MessageHandler handler) {
@@ -24,6 +24,7 @@ public class ClientCore implements CoreMethod {
 
     @Override
     public GenaralSpec query(String topic, String criteria, MessageHandler handler) {
+
         return null;
     }
 

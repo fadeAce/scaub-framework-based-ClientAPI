@@ -6,4 +6,8 @@ import com.finogeeks.kernal.pattern.def.PatternRouter;
  * Created by teril on 2017/9/14.
  */
 public class PatternNative implements PatternRouter {
+    @Override
+    public void pin() {
+
+    }
 }
