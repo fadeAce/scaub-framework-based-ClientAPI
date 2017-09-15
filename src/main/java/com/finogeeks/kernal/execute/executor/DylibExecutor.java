@@ -1,9 +1,12 @@
 package com.finogeeks.kernal.execute.executor;
 
+import com.finogeeks.kernal.model.frame.GenaralSpec;
+import com.sun.jna.Library;
+
 /**
  * Created by teril on 2017/9/15.
  */
-public interface DylibExecutor {
+public interface DylibExecutor extends Library {
     // Foreign functions
     String Publish(String str1,String str2,int clientSeq);
     // rebuild version of api: sub q sub&q by common receive and create.

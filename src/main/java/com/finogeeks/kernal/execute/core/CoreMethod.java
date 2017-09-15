@@ -6,6 +6,8 @@ import com.finogeeks.kernal.model.frame.GenaralSpec;
 
 public interface CoreMethod {
 
+    public GenaralSpec init(String name, String instance);
+
     public GenaralSpec publish(String topic, String message);
 
     public GenaralSpec subscribe(String topic, String criteria, MessageHandler handler);

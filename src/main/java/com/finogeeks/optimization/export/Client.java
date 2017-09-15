@@ -10,6 +10,9 @@ import com.finogeeks.optimization.raw.ClientCore;
 
 public class Client extends ClientCore {
 
+    //main tag of client que
+    private int que;
+
     //two main element to keep it unique
     private String name;
     private String instance;
@@ -25,11 +28,13 @@ public class Client extends ClientCore {
     public Client(String name, String instance){
         setName(name);
         setInstance(instance);
+        setPattern(Pattern.PATTERN_MULTI);
+        setQue(init(name,instance).getClient());
     }
     public Client(String name, String instance,Pattern pattern){
         setName(name);
         setInstance(instance);
-        setPattern(Pattern.PATTERN_MULTI);
+        setPattern(pattern);
     }
 
     // public safety packaging
@@ -72,5 +77,13 @@ public class Client extends ClientCore {
 
     private void setPattern(Pattern pattern) {
         this.pattern = pattern;
+    }
+
+    public int getQue() {
+        return que;
+    }
+
+    private void setQue(int que) {
+        this.que = que;
     }
 }

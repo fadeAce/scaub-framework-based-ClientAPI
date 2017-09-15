@@ -1,9 +1,7 @@
 package com.finogeeks.kernal.pattern.dispatcher;
 
-import com.finogeeks.kernal.model.frame.EnumTensor;
-import com.finogeeks.kernal.model.frame.Key;
-import com.finogeeks.kernal.model.frame.Method;
-import com.finogeeks.kernal.model.frame.Pattern;
+import com.finogeeks.kernal.model.InitRes;
+import com.finogeeks.kernal.model.frame.*;
 import com.finogeeks.kernal.pattern.list.PatternMulti;
 
 import java.util.Map;
@@ -13,7 +11,7 @@ import java.util.Map;
  */
 public class Mediator {
     // All complex matching uniforms are collected here .
-    public Boolean match(EnumTensor enumTensor){
+    public static GenaralSpec match(EnumTensor enumTensor){
 
         //data repackage
         Method method = enumTensor.getM();
@@ -24,13 +22,17 @@ public class Mediator {
         switch(pattern){
             case PATTERN_MULTI:
                 switch(method){
+                    case METHOD_INIT:
+                        //INIT MULTI
+                        PatternMulti patternMultiI = new PatternMulti();
+                        return new InitRes(patternMultiI.init(paramap));
                     case METHOD_QUERY:
                         //QUERY MULTI
-                        PatternMulti patternMulti = new PatternMulti();
-                        patternMulti.query(paramap);
+                        PatternMulti patternMultiQ = new PatternMulti();
+                        patternMultiQ.query(paramap);
+                        return null;
                 }
         }
-
-        return true;
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package com.finogeeks.kernal.pattern.list;
 
+import com.finogeeks.kernal.execute.pool.DylibLoaderFixed;
 import com.finogeeks.kernal.model.frame.BaseTag;
 import com.finogeeks.kernal.model.frame.Key;
 import com.finogeeks.kernal.model.frame.Phase;
@@ -25,5 +26,13 @@ public class PatternMulti implements PatternRouter,BaseTag {
 
     public void query(Map<Key, Object> paramap) {
 
+    }
+
+    public int init(Map<Key, Object> paramap) {
+        String name = (String) paramap.get("name");
+        String instance = (String) paramap.get("instance");
+        DylibLoaderFixed dylibLoaderFixed = new DylibLoaderFixed();
+        int clientQue = dylibLoaderFixed.getExecutor().Init(name,instance);
+        return clientQue;
     }
 }

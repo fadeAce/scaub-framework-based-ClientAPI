@@ -15,4 +15,9 @@ public class DylibLoaderFixed implements LibLoader{
         DylibExecutor core =  (DylibExecutor) Native.loadLibrary( dir+"/target/classes/transfer-1.2.1/resources/finogeeks_J.so" , DylibExecutor.class);
         return core;
     }
+
+    @Override
+    public DylibExecutor getExecutor() {
+        return getLibInstance();
+    }
 }
