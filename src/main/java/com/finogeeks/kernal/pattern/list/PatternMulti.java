@@ -22,4 +22,8 @@ public class PatternMulti implements PatternRouter,BaseTag {
         //
     }
 
+
+    public void query(Map<Key, Object> paramap) {
+
+    }
 }

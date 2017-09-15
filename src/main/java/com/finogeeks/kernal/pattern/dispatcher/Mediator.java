@@ -27,7 +27,7 @@ public class Mediator {
                     case METHOD_QUERY:
                         //QUERY MULTI
                         PatternMulti patternMulti = new PatternMulti();
-                        patternMulti.pin(paramap);
+                        patternMulti.query(paramap);
                 }
         }
 
