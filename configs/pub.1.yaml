@@ -1,6 +1,6 @@
 log:
   time: true
-  debug: true
+  debug: false
   colors: true
   pid: true
 topic_configs:

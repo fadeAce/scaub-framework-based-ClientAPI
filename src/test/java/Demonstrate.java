@@ -5,7 +5,7 @@ import com.finogeeks.optimization.Client;
  */
 public class Demonstrate {
     public static void main(String Args[]){
-        System.out.println(System.getenv("connector"));
+//        System.out.println(System.getenv("connector"));
         Client loader = new Client("loader","1");
         loader.query("rds_bond","",new Assembler());
         System.out.println("=======All unit test cases are done !========");

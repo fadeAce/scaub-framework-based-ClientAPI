@@ -1,3 +1,4 @@
+import com.finogeeks.kernal.model.frame.Pattern;
 import com.finogeeks.optimization.export.Client;
 
 /**
@@ -6,6 +7,9 @@ import com.finogeeks.optimization.export.Client;
 public class NewFrameTest {
     public static void main(String Args[]){
         Client loader = new Client("loader","1");
-        System.out.println(loader.getQue());
+        loader.query("rds_bond","",new Assembler());
+        System.out.println("[client seq:"+loader.getQue()+",client pattern:"+loader.getPattern().toString()+"]");
+        Client pub = new Client("pub","1", Pattern.PATTERN_QUE);
+        System.out.println("[client seq:"+pub.getQue()+",client pattern:"+pub.getPattern().toString()+"]");
     }
 }

@@ -3,9 +3,11 @@ package com.finogeeks.optimization.raw;
 import com.finogeeks.kernal.execute.core.CoreMethod;
 import com.finogeeks.kernal.handle.calback.handler.MessageHandler;
 import com.finogeeks.kernal.model.InitRes;
+import com.finogeeks.kernal.model.QueryRes;
 import com.finogeeks.kernal.model.Subscription;
 import com.finogeeks.kernal.model.frame.*;
 import com.finogeeks.kernal.pattern.dispatcher.Mediator;
+import com.finogeeks.optimization.export.Client;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,16 +21,19 @@ public class ClientCore implements CoreMethod {
  */
     protected Pattern pattern ;
 
+    protected int client;
+
     @Override
     public InitRes init(String name, String instance) {
         EnumTensor enumTensor = new EnumTensor();
-        enumTensor.setP(Pattern.PATTERN_MULTI);
+        enumTensor.setP(pattern);
         enumTensor.setM(Method.METHOD_INIT);
         Map<Key,Object> paramap = new HashMap<>();
         paramap.put(Key.NAME,name);
         paramap.put(Key.INSTANCE,instance);
         enumTensor.setParam(paramap);
         InitRes initRes = (InitRes) Mediator.match(enumTensor);
+        this.client = initRes.getClient();
         return initRes;
     }
 
@@ -43,7 +48,7 @@ public class ClientCore implements CoreMethod {
     }
 
     @Override
-    public GenaralSpec query(String topic, String criteria, MessageHandler handler) {
+    public QueryRes query(String topic, String criteria, MessageHandler handler) {
         EnumTensor enumTensor = new EnumTensor();
         enumTensor.setM(Method.METHOD_QUERY);
         enumTensor.setP(pattern);
@@ -51,9 +56,16 @@ public class ClientCore implements CoreMethod {
         paramap.put(Key.TOPIC,topic);
         paramap.put(Key.CRITERIA,criteria);
         paramap.put(Key.MESSAGEHANDLER,handler);
+        paramap.put(Key.CLIENT,client);
+        paramap.put(Key.METHOD,Method.METHOD_QUERY);
         enumTensor.setParam(paramap);
-        Mediator.match(enumTensor);
-        return null;
+        QueryRes queryRes = (QueryRes) Mediator.match(enumTensor);
+        if(queryRes.getTag()){
+            return queryRes;
+        }else{
+            // err expending & tracing TBD
+        }
+        return queryRes;
     }
 
     @Override

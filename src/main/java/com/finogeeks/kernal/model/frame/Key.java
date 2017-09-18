@@ -10,5 +10,7 @@ public enum Key {
     TOPIC,
     CRITERIA,
     MESSAGEHANDLER,
-    SUBSCRIPTION
+    SUBSCRIPTION,
+    MULTIEXECUTOR,
+    METHOD
 }

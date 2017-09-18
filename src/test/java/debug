@@ -1,0 +1,124 @@
+# demo new model
+========Init========
+======== regist FIX40
+======== regist FIX50
+=======connect========
+[83892] 2017/09/18 12:35:27.456096 [DBG] init topic manager
+[83892] 2017/09/18 12:35:27.456346 [DBG] subject generator, topic plasmon_query, template plasmon_query.{{.GetTopic}}
+[83892] 2017/09/18 12:35:27.456661 [DBG] subject generator, topic plasmon_push_config, template plasmon_push_config.{{.GetServer}}>
+[83892] 2017/09/18 12:35:27.456965 [DBG] subject generator, topic plasmon_topic, template plasmon_topic.{{.GetTopic}}
+[83892] 2017/09/18 12:35:27.457212 [DBG] subject generator, topic plasmon_response, template plasmon_response.{{.GetSenderCompID}}
+[83892] 2017/09/18 12:35:27.457415 [DBG] subject generator, topic plasmon_control, template plasmon_control.{{.GetServer}}
+[83892] 2017/09/18 12:35:27.457583 [DBG] subject generator, topic plasmon_heartbeat, template plasmon_hb.{{.GetServer}}>
+[83892] 2017/09/18 12:35:27.457837 [DBG] subject generator, topic plasmon_status, template plasmon_status.{{.GetServer}}>
+[83892] 2017/09/18 12:35:27.457961 [DBG] subject generator, topic plasmon_report, template plasmon_report.{{.GetServer}}>
+[83892] 2017/09/18 12:35:27.458123 [DBG] init request manager
+[83892] 2017/09/18 12:35:27.458436 [DBG] subscribe topic plasmon_response, subject plasmon_response.*.*
+[83892] 2017/09/18 12:35:27.458515 [INF] init state manager
+[83892] 2017/09/18 12:35:27.458552 [INF] wait for base service depends
+[83892] 2017/09/18 12:35:27.459566 [DBG] subscribe topic plasmon_status, subject plasmon_status.monitor.1
+[83892] 2017/09/18 12:35:27.460449 [DBG] publish topic plasmon_query, subject plasmon_query.plasmon_status, message: 8=PLASMON.1.09=5735=Q20002=.20003=plasmon_status20004=Server=monitor.110=006
+[83892] 2017/09/18 12:35:27.460573 [DBG] request time 2017-09-18 04:35:27.46 +0000 UTC, request seq 0
+[83892] 2017/09/18 12:35:27.460914 [DBG] subscribe topic plasmon_status, subject plasmon_status.cache.1
+[83892] 2017/09/18 12:35:27.463852 [DBG] publish topic plasmon_query, subject plasmon_query.plasmon_status, message: 8=PLASMON.1.09=5535=Q20002=.20003=plasmon_status20004=Server=cache.110=240
+[83892] 2017/09/18 12:35:27.463997 [DBG] request time 2017-09-18 04:35:27.461 +0000 UTC, request seq 0
+[83892] 2017/09/18 12:35:27.467994 [DBG] receive topic plasmon_response, subject plasmon_response.., message 8=PLASMON.1.09=5635=STA52=20170918-04:35:03.17820000=220002=monitor.110=151
+[83892] 2017/09/18 12:35:27.468015 [DBG] requestTime 2017-09-18 04:35:27.46 +0000 UTC, requestSeq 0
+[83892] 2017/09/18 12:35:27.468039 [INF] receive server status for Server=monitor.1
+[83892] 2017/09/18 12:35:27.468184 [DBG] receive topic plasmon_response, subject plasmon_response.., message 8=PLASMON.1.09=635=QM10=062
+[83892] 2017/09/18 12:35:27.468193 [DBG] requestTime 2017-09-18 04:35:27.46 +0000 UTC, requestSeq 0
+[83892] 2017/09/18 12:35:27.468196 [DBG] request end
+[83892] 2017/09/18 12:35:27.471363 [DBG] receive topic plasmon_response, subject plasmon_response.., message 8=PLASMON.1.09=5435=STA52=20170918-04:35:02.57020000=220002=cache.110=124
+[83892] 2017/09/18 12:35:27.471382 [DBG] requestTime 2017-09-18 04:35:27.461 +0000 UTC, requestSeq 0
+[83892] 2017/09/18 12:35:27.471399 [INF] receive server status for Server=cache.1
+[83892] 2017/09/18 12:35:27.471833 [DBG] publish topic plasmon_report, subject plasmon_report..>, message: 8=PLASMON.1.09=6435=DD20002=.20008=220009=monitor20010=120009=cache20010=110=088
+[83892] 2017/09/18 12:35:27.471996 [INF] client enter state INIT
+[83892] 2017/09/18 12:35:27.472317 [DBG] receive topic plasmon_response, subject plasmon_response.., message 8=PLASMON.1.09=635=QM10=062
+[83892] 2017/09/18 12:35:27.472331 [DBG] requestTime 2017-09-18 04:35:27.461 +0000 UTC, requestSeq 0
+[83892] 2017/09/18 12:35:27.472335 [DBG] request end
+[83892] 2017/09/18 12:35:27.472393 [DBG] publish topic plasmon_report, subject plasmon_report..>, message: 8=PLASMON.1.09=4835=STA52=20170918-04:35:27.47220000=020002=.10=096
+[83892] 2017/09/18 12:35:27.472478 [INF] publish topic configs
+[83892] 2017/09/18 12:35:27.472922 [DBG] publish topic plasmon_push_config, subject plasmon_push_config..>, message: 8=PLASMON.1.09=2235=CG20002=.20005=010=029
+[83892] 2017/09/18 12:35:27.473105 [DBG] request time 2017-09-18 04:35:27.473 +0000 UTC, request seq 0
+[83892] 2017/09/18 12:35:27.477488 [DBG] receive topic plasmon_response, subject plasmon_response.., message 8=PLASMON.1.09=1435=CR20013=010=200
+[83892] 2017/09/18 12:35:27.477507 [DBG] requestTime 2017-09-18 04:35:27.473 +0000 UTC, requestSeq 0
+[83892] 2017/09/18 12:35:27.477517 [DBG] request end
+[83892] 2017/09/18 12:35:27.477586 [INF] wait for service depends
+[83892] 2017/09/18 12:35:27.477624 [INF] client leave state INIT
+[83892] 2017/09/18 12:35:27.477628 [INF] client enter state STARTING
+[83892] 2017/09/18 12:35:27.477751 [DBG] publish topic plasmon_report, subject plasmon_report..>, message: 8=PLASMON.1.09=4835=STA52=20170918-04:35:27.47720000=120002=.10=102
+[83892] 2017/09/18 12:35:27.478097 [INF] wait for required topics
+[83892] 2017/09/18 12:35:27.478113 [INF] client leave state STARTING
+[83892] 2017/09/18 12:35:27.478116 [INF] client enter state ACTIVE
+[83892] 2017/09/18 12:35:27.478272 [DBG] publish topic plasmon_report, subject plasmon_report..>, message: 8=PLASMON.1.09=4835=STA52=20170918-04:35:27.47820000=220002=.10=104
+[83892] 2017/09/18 12:35:27.478399 [DBG] init control manager
+[83892] 2017/09/18 12:35:27.478670 [DBG] subscribe topic plasmon_control, subject plasmon_control.*.*
+========client: 0 =========
+[client seq:0,client pattern:PATTERN_MULTI]
+
+
+# demo origin
+
+========Init========
+======== regist FIX40
+======== regist FIX50
+=======connect========
+[83962] 2017/09/18 12:40:29.306525 [DBG] init topic manager
+[83962] 2017/09/18 12:40:29.306674 [DBG] subject generator, topic plasmon_control, template plasmon_control.{{.GetServer}}
+[83962] 2017/09/18 12:40:29.306850 [DBG] subject generator, topic plasmon_heartbeat, template plasmon_hb.{{.GetServer}}>
+[83962] 2017/09/18 12:40:29.306959 [DBG] subject generator, topic plasmon_status, template plasmon_status.{{.GetServer}}>
+[83962] 2017/09/18 12:40:29.307135 [DBG] subject generator, topic plasmon_report, template plasmon_report.{{.GetServer}}>
+[83962] 2017/09/18 12:40:29.307259 [DBG] subject generator, topic plasmon_query, template plasmon_query.{{.GetTopic}}
+[83962] 2017/09/18 12:40:29.307326 [DBG] subject generator, topic plasmon_push_config, template plasmon_push_config.{{.GetServer}}>
+[83962] 2017/09/18 12:40:29.307401 [DBG] subject generator, topic plasmon_topic, template plasmon_topic.{{.GetTopic}}
+[83962] 2017/09/18 12:40:29.307501 [DBG] subject generator, topic plasmon_response, template plasmon_response.{{.GetSenderCompID}}
+[83962] 2017/09/18 12:40:29.307615 [DBG] subject generator, topic rds_repo, template rds_repo.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+[83962] 2017/09/18 12:40:29.307891 [DBG] subject generator, topic rds_futures, template rds_futures.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+[83962] 2017/09/18 12:40:29.308192 [DBG] subject generator, topic rds_bond, template rds_bond.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetInstrumentSubClass2}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+[83962] 2017/09/18 12:40:29.308458 [DBG] init request manager
+[83962] 2017/09/18 12:40:29.308582 [DBG] subscribe topic plasmon_response, subject plasmon_response.loader.1
+[83962] 2017/09/18 12:40:29.308605 [INF] init state manager
+[83962] 2017/09/18 12:40:29.308635 [INF] wait for base service depends
+[83962] 2017/09/18 12:40:29.308810 [DBG] subscribe topic plasmon_status, subject plasmon_status.monitor.1
+[83962] 2017/09/18 12:40:29.309059 [DBG] publish topic plasmon_query, subject plasmon_query.plasmon_status, message: 8=PLASMON.1.09=6435=Q20002=loader.120003=plasmon_status20004=Server=monitor.110=172
+[83962] 2017/09/18 12:40:29.309200 [DBG] request time 2017-09-18 04:40:29.309 +0000 UTC, request seq 0
+[83962] 2017/09/18 12:40:29.309367 [DBG] subscribe topic plasmon_status, subject plasmon_status.cache.1
+[83962] 2017/09/18 12:40:29.309531 [DBG] publish topic plasmon_query, subject plasmon_query.plasmon_status, message: 8=PLASMON.1.09=6235=Q20002=loader.120003=plasmon_status20004=Server=cache.110=150
+[83962] 2017/09/18 12:40:29.309635 [DBG] request time 2017-09-18 04:40:29.309 +0000 UTC, request seq 1
+[83962] 2017/09/18 12:40:29.316074 [DBG] receive topic plasmon_response, subject plasmon_response.loader.1, message 8=PLASMON.1.09=5635=STA52=20170918-04:35:03.17820000=220002=monitor.110=151
+[83962] 2017/09/18 12:40:29.316095 [DBG] requestTime 2017-09-18 04:40:29.309 +0000 UTC, requestSeq 0
+[83962] 2017/09/18 12:40:29.316117 [INF] receive server status for Server=monitor.1
+[83962] 2017/09/18 12:40:29.316296 [DBG] receive topic plasmon_response, subject plasmon_response.loader.1, message 8=PLASMON.1.09=635=QM10=062
+[83962] 2017/09/18 12:40:29.316307 [DBG] requestTime 2017-09-18 04:40:29.309 +0000 UTC, requestSeq 0
+[83962] 2017/09/18 12:40:29.316311 [DBG] request end
+[83962] 2017/09/18 12:40:29.319332 [DBG] receive topic plasmon_response, subject plasmon_response.loader.1, message 8=PLASMON.1.09=5435=STA52=20170918-04:35:02.57020000=220002=cache.110=124
+[83962] 2017/09/18 12:40:29.319350 [DBG] requestTime 2017-09-18 04:40:29.309 +0000 UTC, requestSeq 1
+[83962] 2017/09/18 12:40:29.319369 [INF] receive server status for Server=cache.1
+[83962] 2017/09/18 12:40:29.319582 [DBG] receive topic plasmon_response, subject plasmon_response.loader.1, message 8=PLASMON.1.09=635=QM10=062
+[83962] 2017/09/18 12:40:29.319593 [DBG] requestTime 2017-09-18 04:40:29.309 +0000 UTC, requestSeq 1
+[83962] 2017/09/18 12:40:29.319598 [DBG] request end
+[83962] 2017/09/18 12:40:29.319786 [DBG] publish topic plasmon_report, subject plasmon_report.loader.1, message: 8=PLASMON.1.09=7135=DD20002=loader.120008=220009=monitor20010=120009=cache20010=110=254
+[83962] 2017/09/18 12:40:29.319840 [INF] client enter state INIT
+[83962] 2017/09/18 12:40:29.320041 [DBG] publish topic plasmon_report, subject plasmon_report.loader.1, message: 8=PLASMON.1.09=5535=STA52=20170918-04:40:29.31920000=020002=loader.110=004
+[83962] 2017/09/18 12:40:29.320092 [INF] publish topic configs
+[83962] 2017/09/18 12:40:29.320527 [DBG] publish topic plasmon_push_config, subject plasmon_push_config.loader.1, message: 8=PLASMON.1.09=60935=CG20002=loader.120005=320003=rds_bond20006=rds_bond.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetInstrumentSubClass2}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+20021=20007=FIX5020015=20003=rds_repo20006=rds_repo.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+20021=20007=FIX5020015=20003=rds_futures20006=rds_futures.{{.GetProductId}}.{{.GetInstrumentClass}}.{{.GetInstrumentSubClass}}.{{.GetPublisherID}}.{{.GetSourceSystemID}}.{{.GetExch}}
+20021=20007=FIX5020015=10=129
+[83962] 2017/09/18 12:40:29.320659 [DBG] request time 2017-09-18 04:40:29.32 +0000 UTC, request seq 2
+[83962] 2017/09/18 12:40:29.329620 [DBG] receive topic plasmon_response, subject plasmon_response.loader.1, message 8=PLASMON.1.09=1435=CR20013=010=200
+[83962] 2017/09/18 12:40:29.329640 [DBG] requestTime 2017-09-18 04:40:29.32 +0000 UTC, requestSeq 2
+[83962] 2017/09/18 12:40:29.329655 [DBG] request end
+[83962] 2017/09/18 12:40:29.329691 [INF] wait for service depends
+[83962] 2017/09/18 12:40:29.329708 [INF] client leave state INIT
+[83962] 2017/09/18 12:40:29.329712 [INF] client enter state STARTING
+[83962] 2017/09/18 12:40:29.329820 [DBG] publish topic plasmon_report, subject plasmon_report.loader.1, message: 8=PLASMON.1.09=5535=STA52=20170918-04:40:29.32920000=120002=loader.110=006
+[83962] 2017/09/18 12:40:29.329882 [INF] wait for required topics
+[83962] 2017/09/18 12:40:29.329911 [INF] client leave state STARTING
+[83962] 2017/09/18 12:40:29.329977 [INF] client enter state ACTIVE
+[83962] 2017/09/18 12:40:29.330117 [DBG] publish topic plasmon_report, subject plasmon_report.loader.1, message: 8=PLASMON.1.09=5535=STA52=20170918-04:40:29.33020000=220002=loader.110=255
+[83962] 2017/09/18 12:40:29.330170 [DBG] init control manager
+[83962] 2017/09/18 12:40:29.330388 [DBG] subscribe topic plasmon_control, subject plasmon_control.loader.1
+========client: 0 =========
+
+

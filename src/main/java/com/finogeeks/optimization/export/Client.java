@@ -29,12 +29,15 @@ public class Client extends ClientCore {
         setName(name);
         setInstance(instance);
         setPattern(Pattern.PATTERN_MULTI);
+        super.pattern = this.getPattern();
         setQue(init(name,instance).getClient());
     }
     public Client(String name, String instance,Pattern pattern){
         setName(name);
         setInstance(instance);
         setPattern(pattern);
+        super.pattern = this.getPattern();
+        setQue(init(name,instance).getClient());
     }
 
     // public safety packaging
@@ -71,7 +74,7 @@ public class Client extends ClientCore {
         this.origin = origin;
     }
 
-    private Pattern getPattern() {
+    public Pattern getPattern() {
         return pattern;
     }
 
@@ -85,5 +88,6 @@ public class Client extends ClientCore {
 
     private void setQue(int que) {
         this.que = que;
+        super.client= que;
     }
 }

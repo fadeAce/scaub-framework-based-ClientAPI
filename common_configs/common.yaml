@@ -36,4 +36,4 @@ base_topic_configs:
     template: |
       plasmon_control.{{.GetServer}}
     format: PLASMON
-connector: nats://123.207.115.95:4222
+#connector: nats://123.207.115.95:4222

@@ -1,6 +1,6 @@
 log:
   time: true
-  debug: false
+  debug: true
   colors: true
   pid: true
 depends:
