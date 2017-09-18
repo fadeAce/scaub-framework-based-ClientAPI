@@ -3,15 +3,16 @@ package com.finogeeks.kernal.pattern.list;
 import com.finogeeks.kernal.execute.executor.DylibExecutor;
 import com.finogeeks.kernal.execute.executor.HandleBinder;
 import com.finogeeks.kernal.execute.pool.DylibLoaderFixed;
+import com.finogeeks.kernal.execute.pool.LoopFixed;
 import com.finogeeks.kernal.execute.pool.ThreadPatcher;
+import com.finogeeks.kernal.handle.calback.handler.MessageHandler;
 import com.finogeeks.kernal.model.Handle;
-import com.finogeeks.kernal.model.QueryRes;
 import com.finogeeks.kernal.model.frame.BaseTag;
 import com.finogeeks.kernal.model.frame.Key;
+import com.finogeeks.kernal.model.frame.Method;
 import com.finogeeks.kernal.model.frame.Phase;
 import com.finogeeks.kernal.pattern.def.PatternRouter;
 import com.finogeeks.kernal.pattern.dispatcher.Mediator;
-
 import java.util.Map;
 
 /**
@@ -40,7 +41,12 @@ public class PatternMulti implements PatternRouter,BaseTag {
         //E-H model
         HandleBinder handleBinder = new ThreadPatcher();
         Handle querHandle = (Handle) handleBinder.bindHandle(paramap);
-
+        LoopFixed loopFixed = new LoopFixed();
+        loopFixed.setHandle(querHandle.getHandle());
+        loopFixed.setMethod(Method.METHOD_QUERY);
+        loopFixed.setMl((MessageHandler) paramap.get(Key.MESSAGEHANDLER));
+        Thread querythread=new Thread(loopFixed);
+        querythread.start();
         return querHandle;
     }
 

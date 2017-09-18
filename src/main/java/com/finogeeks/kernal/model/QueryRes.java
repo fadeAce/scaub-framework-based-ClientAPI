@@ -7,9 +7,7 @@ import com.finogeeks.kernal.model.frame.GenaralSpec;
  */
 public class QueryRes implements GenaralSpec {
 
-    private int queryHandle;
-
-    private Boolean tag;
+    private Boolean tag = true;
 
     private String err_code;
 
@@ -29,11 +27,4 @@ public class QueryRes implements GenaralSpec {
         this.err_code = err_code;
     }
 
-    public int getQueryHandle() {
-        return queryHandle;
-    }
-
-    public void setQueryHandle(int queryHandle) {
-        this.queryHandle = queryHandle;
-    }
 }
