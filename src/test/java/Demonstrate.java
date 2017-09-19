@@ -10,5 +10,8 @@ public class Demonstrate {
         loader.query("rds_bond","",new Assembler());
         System.out.println("=======All unit test cases are done !========");
 
+        Client sub = new Client("sub","1");
+        sub.subscribe("order","account=mike",new Assembler());
+
     }
 }

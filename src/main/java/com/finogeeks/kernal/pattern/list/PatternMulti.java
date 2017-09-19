@@ -7,6 +7,7 @@ import com.finogeeks.kernal.execute.pool.LoopFixed;
 import com.finogeeks.kernal.execute.pool.ThreadPatcher;
 import com.finogeeks.kernal.handle.calback.handler.MessageHandler;
 import com.finogeeks.kernal.model.Handle;
+import com.finogeeks.kernal.model.Terminator;
 import com.finogeeks.kernal.model.frame.BaseTag;
 import com.finogeeks.kernal.model.frame.Key;
 import com.finogeeks.kernal.model.frame.Method;
@@ -62,5 +63,21 @@ public class PatternMulti implements PatternRouter,BaseTag {
         int clientQue= ((DylibExecutor)Mediator.getMultiVal(Key.MULTIEXECUTOR)).Init(name,instance);
 
         return clientQue;
+    }
+
+    public Handle subscribe(Map<Key, Object> paramap) {
+        //E-H model
+        HandleBinder handleBinder = new ThreadPatcher();
+        Handle subHandle = (Handle) handleBinder.bindHandle(paramap);
+        LoopFixed loopFixed = new LoopFixed();
+        loopFixed.setHandle(subHandle.getHandle());
+        loopFixed.setMethod(Method.METHOD_SUB);
+        loopFixed.setMl((MessageHandler) paramap.get(Key.MESSAGEHANDLER));
+        loopFixed.setTerminator(new Terminator());
+        loopFixed.setTopic((String)paramap.get(Key.TOPIC));
+        loopFixed.setClientseq((Integer)paramap.get(Key.CLIENT));
+        Thread subthread=new Thread(loopFixed);
+        subthread.start();
+        return subHandle;
     }
 }

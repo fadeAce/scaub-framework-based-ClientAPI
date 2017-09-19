@@ -44,7 +44,18 @@ public class ClientCore implements CoreMethod {
 
     @Override
     public Subscription subscribe(String topic, String criteria, MessageHandler handler) {
-        return null;
+        EnumTensor enumTensor = new EnumTensor();
+        enumTensor.setP(pattern);
+        enumTensor.setM(Method.METHOD_SUB);
+        Map<Key,Object> paramap = new HashMap<>();
+        paramap.put(Key.TOPIC,topic);
+        paramap.put(Key.CRITERIA,criteria);
+        paramap.put(Key.MESSAGEHANDLER,handler);
+        paramap.put(Key.CLIENT,client);
+        paramap.put(Key.METHOD,Method.METHOD_SUB);
+        enumTensor.setParam(paramap);
+        Subscription subscription = (Subscription) Mediator.match(enumTensor);
+        return subscription;
     }
 
     @Override

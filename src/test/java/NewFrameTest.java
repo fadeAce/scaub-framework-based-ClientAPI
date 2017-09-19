@@ -11,5 +11,7 @@ public class NewFrameTest {
         System.out.println("[client seq:"+loader.getQue()+",client pattern:"+loader.getPattern().toString()+"]");
         Client pub = new Client("pub","1", Pattern.PATTERN_QUE);
         System.out.println("[client seq:"+pub.getQue()+",client pattern:"+pub.getPattern().toString()+"]");
+        Client sub = new Client("sub","1");
+        sub.subscribe("order","account=mike",new Assembler());
     }
 }

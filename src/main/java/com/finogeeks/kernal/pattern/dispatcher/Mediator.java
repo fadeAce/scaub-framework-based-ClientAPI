@@ -46,9 +46,13 @@ public class Mediator {
                         //QUERY MULTI
                         PatternMulti patternMultiQ = new PatternMulti();
                         Handle handle = patternMultiQ.query(paramap);
-
                         QueryRes queryRes = new QueryRes();
                         return queryRes;
+                    case METHOD_SUB:
+                        //SUB MULTI
+                        PatternMulti patternMultiS = new PatternMulti();
+                        patternMultiS.subscribe(paramap);
+
                 }
             case PATTERN_QUE:
                 switch(method){

@@ -25,6 +25,11 @@ public class ThreadPatcher implements HandleBinder {
                 int querySeq = dylibExecutor.CreateQuery(topic,criteria,client);
                 Handle queryHandle = new Handle(querySeq);
                 return queryHandle;
+            case METHOD_SUB:
+                DylibExecutor dylibExecutorS = (DylibExecutor) Mediator.getMultiVal(Key.MULTIEXECUTOR);
+                int subSeq = dylibExecutorS.CreateSubscription(topic,criteria,client);
+                Handle subHandle = new Handle(subSeq);
+                return subHandle;
         }
         return new Handle();
     }
