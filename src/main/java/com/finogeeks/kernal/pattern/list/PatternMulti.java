@@ -90,4 +90,20 @@ public class PatternMulti implements PatternRouter,BaseTag {
         ((DylibExecutor)Mediator.getMultiVal(Key.MULTIEXECUTOR)).Publish(topic,message,(Integer) paramap.get(Key.CLIENT));
 
     }
+
+    public Handle querySub(Map<Key, Object> paramap) {
+        //E-H model
+        HandleBinder handleBinder = new ThreadPatcher();
+        Handle subHandle = (Handle) handleBinder.bindHandle(paramap);
+        LoopFixed loopFixed = new LoopFixed();
+        loopFixed.setHandle(subHandle.getHandle());
+        loopFixed.setMethod(Method.METHOD_UNQUERYSUB);
+        loopFixed.setMl((MessageHandler) paramap.get(Key.MESSAGEHANDLER));
+        loopFixed.setTerminator(new Terminator());
+        loopFixed.setTopic((String)paramap.get(Key.TOPIC));
+        loopFixed.setClientseq((Integer)paramap.get(Key.CLIENT));
+        Thread querysubthread=new Thread(loopFixed);
+        querysubthread.start();
+        return subHandle;
+    }
 }

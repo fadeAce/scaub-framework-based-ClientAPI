@@ -6,5 +6,6 @@ package com.finogeeks.kernal.model.frame;
 public interface GenaralSpec {
 /**
  * any implement gives a proof of GeneralImp that can be replaced in method CoreMethod as a param .
+ * general return val Objs working as none block val-flow.
  */
 }

@@ -21,5 +21,8 @@ public class NewFrameTest {
 //        sub.subscribe("order","account=mike",new Assembler());
 
 
+        //querysub
+        Client qs = new Client("querysub","1");
+        qs.queryAndSubscribe("order","account=mike",new Assembler());
     }
 }

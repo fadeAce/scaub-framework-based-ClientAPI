@@ -43,7 +43,11 @@ public class LoopFixed implements MessageReceiver,Runnable{
                 }
                 break;
             case METHOD_UNQUERYSUB:
-                    System.out.println("METHOD_UNQUERYSUB");
+                while(terminator.getQuerysub_ack()){
+                    String msg =  dylibExecutor.RecvQueryAndSub(this.handle);
+                    //query-back func
+                    ml.execute("",msg);
+                }
                 break;
         }
     }

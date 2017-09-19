@@ -57,6 +57,9 @@ public class Mediator {
                         PatternMulti patternMultiS = new PatternMulti();
                         patternMultiS.subscribe(paramap);
                         return null;
+                    case METHOD_UNQUERYSUB:
+                        PatternMulti patternMultiQS = new PatternMulti();
+                        patternMultiQS.querySub(paramap);
                 }
             case PATTERN_QUE:
                 switch(method){
