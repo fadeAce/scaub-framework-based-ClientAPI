@@ -12,5 +12,6 @@ public enum Key {
     MESSAGEHANDLER,
     SUBSCRIPTION,
     MULTIEXECUTOR,
-    METHOD
+    METHOD,
+    MESSAGEHOLDER
 }

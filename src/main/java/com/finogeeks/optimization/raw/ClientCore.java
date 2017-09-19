@@ -38,7 +38,17 @@ public class ClientCore implements CoreMethod {
     }
 
     @Override
-    public GenaralSpec publish(String topic, String message){
+    public GenaralSpec publish(String topic, Object msgHolder){
+        EnumTensor enumTensor = new EnumTensor();
+        enumTensor.setP(pattern);
+        enumTensor.setM(Method.METHOD_PUB);
+        Map<Key,Object> paramap = new HashMap<>();
+        paramap.put(Key.TOPIC,topic);
+        paramap.put(Key.CLIENT,client);
+        paramap.put(Key.METHOD,Method.METHOD_PUB);
+        paramap.put(Key.MESSAGEHOLDER,msgHolder);
+        enumTensor.setParam(paramap);
+        Mediator.match(enumTensor);
         return null;
     }
 

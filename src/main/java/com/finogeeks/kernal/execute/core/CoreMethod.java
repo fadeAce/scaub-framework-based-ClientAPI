@@ -8,7 +8,7 @@ public interface CoreMethod {
 
     GenaralSpec init(String name, String instance);
 
-    GenaralSpec publish(String topic, String message);
+    GenaralSpec publish(String topic, Object msgHolder);
 
     GenaralSpec subscribe(String topic, String criteria, MessageHandler handler);
 

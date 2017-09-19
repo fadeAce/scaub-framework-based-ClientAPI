@@ -80,4 +80,14 @@ public class PatternMulti implements PatternRouter,BaseTag {
         subthread.start();
         return subHandle;
     }
+
+    public void publish(Map<Key, Object> paramap) {
+        //map dependency
+        String topic = (String) paramap.get(Key.TOPIC);
+        String message = paramap.get(Key.MESSAGEHOLDER).toString();
+        //E-H model
+        //MultiCache option
+        ((DylibExecutor)Mediator.getMultiVal(Key.MULTIEXECUTOR)).Publish(topic,message,(Integer) paramap.get(Key.CLIENT));
+
+    }
 }

@@ -42,6 +42,10 @@ public class Mediator {
                         //INIT MULTI
                         PatternMulti patternMultiI = new PatternMulti();
                         return new InitRes(patternMultiI.init(paramap));
+                    case METHOD_PUB:
+                        PatternMulti patternMultiP = new PatternMulti();
+                        patternMultiP.publish(paramap);
+                        return null;
                     case METHOD_QUERY:
                         //QUERY MULTI
                         PatternMulti patternMultiQ = new PatternMulti();
@@ -52,7 +56,7 @@ public class Mediator {
                         //SUB MULTI
                         PatternMulti patternMultiS = new PatternMulti();
                         patternMultiS.subscribe(paramap);
-
+                        return null;
                 }
             case PATTERN_QUE:
                 switch(method){
