@@ -3,6 +3,7 @@ package com.finogeeks.kernal.execute.pool;
 import com.finogeeks.kernal.execute.executor.DylibExecutor;
 import com.finogeeks.kernal.execute.executor.HandleBinder;
 import com.finogeeks.kernal.model.Handle;
+import com.finogeeks.kernal.model.Terminator;
 import com.finogeeks.kernal.model.frame.Key;
 import com.finogeeks.kernal.model.frame.Method;
 import com.finogeeks.kernal.pattern.dispatcher.Mediator;
@@ -29,12 +30,16 @@ public class ThreadPatcher implements HandleBinder {
                 DylibExecutor dylibExecutorS = (DylibExecutor) Mediator.getMultiVal(Key.MULTIEXECUTOR);
                 int subSeq = dylibExecutorS.CreateSubscription(topic,criteria,client);
                 Handle subHandle = new Handle(subSeq);
+                Terminator terminatorS = new Terminator();
+                subHandle.setTerminator(terminatorS);
                 return subHandle;
-            case METHOD_UNQUERYSUB:
+            case METHOD_QUERYSUB:
                 DylibExecutor dylibExecutorQS = (DylibExecutor) Mediator.getMultiVal(Key.MULTIEXECUTOR);
                 int querysubSeq = dylibExecutorQS.CreateQueryAndSub(topic,criteria,client);
-                Handle querysubHandle = new Handle(querysubSeq);
-                return querysubHandle;
+                Handle querysubHandleQS = new Handle(querysubSeq);
+                Terminator terminatorQS = new Terminator();
+                querysubHandleQS.setTerminator(terminatorQS);
+                return querysubHandleQS;
         }
         return new Handle();
     }

@@ -1,4 +1,4 @@
-package com.finogeeks.kernal.model;
+package com.finogeeks.optimization;
 
 import com.finogeeks.kernal.model.frame.BaseTag;
 import com.finogeeks.kernal.model.frame.GenaralSpec;

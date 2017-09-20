@@ -1,90 +1,53 @@
 package com.finogeeks.kernal.model;
 
-import com.finogeeks.kernal.model.frame.BaseTag;
 import com.finogeeks.kernal.model.frame.GenaralSpec;
-import com.finogeeks.kernal.model.frame.Phase;
-import com.finogeeks.optimization.Client;
+import com.finogeeks.kernal.model.frame.Method;
 
 /**
- * Created by teril on 2017/8/21.
- * sub subquery
+ * Created by teril on 2017/9/20.
  */
-public class Subscription implements GenaralSpec,BaseTag{
-    //int:1 querysub 0:sub
-    private int type;
+public class Subscription implements GenaralSpec{
+    private Boolean tag = true;
+    private Method source;
     private int subSeq;
-    private int querysubseq;
-    private Thread td;
-    private Client.Subscribe subscribe;
-    private Client.QueryAndSubscribe querysubscribe;
+    private Terminator terminator;
 
-    public void setController(int type,Object object){
-        if(type==Client.TYPE_SUBSCRIBE){
-            this.subscribe=(Client.Subscribe)object;
-        }
-        if(type==Client.TYPE_QUERYSUBSCRIBE){
-            this.querysubscribe=(Client.QueryAndSubscribe)object;
-        }
+    public Method getSource() {
+        return source;
     }
 
-    public int getSubQueByType(int type){
-        if(type==Client.TYPE_SUBSCRIBE){
-            return this.subSeq;
+    public Integer getSubSeq(Method method) {
+        if(source==method){
+            return subSeq;
         }else{
-            return this.querysubseq;
+            return null;
         }
     }
 
-    public int getSubSeq() {
-        return subSeq;
+    public void setSubSeq(Method method, int subSeq) {
+        if(tag){
+            this.subSeq = subSeq;
+            this.source = method;
+            this.tag=false;
+        }else{
+            throw new RuntimeException("this subscription has been set");
+        }
+
     }
 
-    public void setSubSeq(int subSeq) {
-        this.subSeq = subSeq;
+    public Boolean getTag() {
+        return tag;
     }
 
-    public Thread getTd() {
-        return td;
+    private void setTag(Boolean tag) {
+        this.tag = tag;
     }
 
-    public void setTd(Thread td) {
-        this.td = td;
+    public Terminator getTerminator() {
+        return terminator;
     }
 
-    public Client.Subscribe getSubscribe() {
-        return subscribe;
-    }
-
-    public void setSubscribe(Client.Subscribe subscribe) {
-        this.subscribe = subscribe;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public int getQuerysubseq() {
-        return querysubseq;
-    }
-
-    public void setQuerysubseq(int querysubseq) {
-        this.querysubseq = querysubseq;
-    }
-
-    public Client.QueryAndSubscribe getQuerysubscribe() {
-        return querysubscribe;
-    }
-
-    public void setQuerysubscribe(Client.QueryAndSubscribe querysubscribe) {
-        this.querysubscribe = querysubscribe;
-    }
-
-    @Override
-    public Phase getPhase() {
-        return Phase.PHASE_MODEL;
+    public void setTerminator(Terminator terminator) {
+        this.terminator = terminator;
     }
 }

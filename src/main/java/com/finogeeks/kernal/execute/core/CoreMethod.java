@@ -24,4 +24,5 @@ public interface CoreMethod {
 
     GenaralSpec isSystemService();
 
+
 }

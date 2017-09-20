@@ -3,7 +3,6 @@
  */
 package com.finogeeks.optimization;
 import com.finogeeks.kernal.handle.calback.handler.MessageHandler;
-import com.finogeeks.kernal.model.Subscription;
 
 public class Client {
 

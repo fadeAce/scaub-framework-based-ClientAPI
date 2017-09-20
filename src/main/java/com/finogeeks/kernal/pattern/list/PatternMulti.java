@@ -7,6 +7,7 @@ import com.finogeeks.kernal.execute.pool.LoopFixed;
 import com.finogeeks.kernal.execute.pool.ThreadPatcher;
 import com.finogeeks.kernal.handle.calback.handler.MessageHandler;
 import com.finogeeks.kernal.model.Handle;
+import com.finogeeks.kernal.model.Subscription;
 import com.finogeeks.kernal.model.Terminator;
 import com.finogeeks.kernal.model.frame.BaseTag;
 import com.finogeeks.kernal.model.frame.Key;
@@ -76,7 +77,7 @@ public class PatternMulti implements PatternRouter,BaseTag {
         loopFixed.setHandle(subHandle.getHandle());
         loopFixed.setMethod(Method.METHOD_SUB);
         loopFixed.setMl((MessageHandler) paramap.get(Key.MESSAGEHANDLER));
-        loopFixed.setTerminator(new Terminator());
+        loopFixed.setTerminator(subHandle.getTerminator());
         loopFixed.setTopic((String)paramap.get(Key.TOPIC));
         loopFixed.setClientseq((Integer)paramap.get(Key.CLIENT));
         Thread subthread=new Thread(loopFixed);
@@ -118,6 +119,33 @@ public class PatternMulti implements PatternRouter,BaseTag {
             e.printStackTrace();
             return false;
         }
+        return true;
+    }
+
+    public Boolean checkService(Map<Key, Object> paramap) {
+        int tag = ((DylibExecutor)Mediator.getMultiVal(Key.MULTIEXECUTOR)).IsSystemService((Integer) paramap.get(Key.CLIENT));
+        if(tag==1){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Boolean unSub(Map<Key, Object> paramap) {
+        Subscription subscription = ((Subscription) paramap.get(Key.SUBSCRIPTION));
+        DylibExecutor dylibExecutor = (DylibExecutor)Mediator.getMultiVal(Key.MULTIEXECUTOR);
+        dylibExecutor.UnSub(subscription.getSubSeq(Method.METHOD_SUB));
+        subscription.getTerminator().setSub_ack(false);
+        dylibExecutor.CloseSubscription(subscription.getSubSeq(Method.METHOD_SUB));
+        return true;
+    }
+
+    public Boolean unQuerySub(Map<Key, Object> paramap) {
+        Subscription subscription = ((Subscription) paramap.get(Key.SUBSCRIPTION));
+        DylibExecutor dylibExecutor = (DylibExecutor)Mediator.getMultiVal(Key.MULTIEXECUTOR);
+        dylibExecutor.UnQuerySub(subscription.getSubSeq(Method.METHOD_QUERYSUB));
+        subscription.getTerminator().setQuerysub_ack(false);
+        dylibExecutor.CloseQuerySub(subscription.getSubSeq(Method.METHOD_QUERYSUB));
         return true;
     }
 }

@@ -1,8 +1,6 @@
 package com.finogeeks.kernal.pattern.dispatcher;
 
-import com.finogeeks.kernal.model.Handle;
-import com.finogeeks.kernal.model.InitRes;
-import com.finogeeks.kernal.model.QueryRes;
+import com.finogeeks.kernal.model.*;
 import com.finogeeks.kernal.model.frame.*;
 import com.finogeeks.kernal.pattern.list.PatternMulti;
 import java.util.HashMap;
@@ -24,7 +22,9 @@ public class Mediator {
         Multi.put(key,obj);
     }
 
-    public static Object getMultiVal(Key key){return Multi.get(key);}
+    public static Object getMultiVal(Key key){
+        return Multi.get(key);
+    }
 
     // All complex matching uniforms are collected here .
     public static GenaralSpec match(EnumTensor enumTensor){
@@ -55,16 +55,34 @@ public class Mediator {
                     case METHOD_SUB:
                         //SUB MULTI
                         PatternMulti patternMultiS = new PatternMulti();
-                        patternMultiS.subscribe(paramap);
-                        return null;
-                    case METHOD_UNQUERYSUB:
-                        PatternMulti patternMultiQS = new PatternMulti();
-                        patternMultiQS.querySub(paramap);
+                        Handle handleS = patternMultiS.subscribe(paramap);
+                        Subscription subscriptionS = new Subscription();
+                        subscriptionS.setSubSeq(Method.METHOD_SUB,handleS.getHandle());
+                        subscriptionS.setTerminator(handleS.getTerminator());
+                        return subscriptionS;
                     case METHOD_CLOSE:
                         PatternMulti patternMultiC = new PatternMulti();
                         Boolean bool=patternMultiC.Close(paramap);
                         GeneralBoolean generalBoolean = new GeneralBoolean(Method.METHOD_CLOSE,Pattern.PATTERN_MULTI,bool);
                         return generalBoolean;
+                    case METHOD_ISSYSSERVICE:
+                        PatternMulti patternMultiIS = new PatternMulti();
+                        patternMultiIS.checkService(paramap);
+                        return null;
+                    case METHOD_QUERYSUB:
+                        PatternMulti patternMultiQS = new PatternMulti();
+                        Handle handleQS = patternMultiQS.querySub(paramap);
+                        Subscription subscriptionQS = new Subscription();
+                        subscriptionQS.setSubSeq(Method.METHOD_QUERYSUB,handleQS.getHandle());
+                        return null;
+                    case METHOD_UNSUB:
+                        PatternMulti patternMultiUS = new PatternMulti();
+                        patternMultiUS.unSub(paramap);
+                        return null;
+                    case METHOD_UNQUERYSUB:
+                        PatternMulti patternMultiUQ = new PatternMulti();
+                        patternMultiUQ.unQuerySub(paramap);
+                        return null;
                 }
             case PATTERN_QUE:
                 switch(method){

@@ -9,6 +9,7 @@ public class Handle implements GenaralSpec{
     private int handle;
     private String err_code;
     private Boolean tag;
+    private Terminator terminator;
     public Handle(){
         this.tag = true ;
     }
@@ -39,5 +40,13 @@ public class Handle implements GenaralSpec{
 
     public void setHandle(int handle) {
         this.handle = handle;
+    }
+
+    public Terminator getTerminator() {
+        return terminator;
+    }
+
+    public void setTerminator(Terminator terminator) {
+        this.terminator = terminator;
     }
 }

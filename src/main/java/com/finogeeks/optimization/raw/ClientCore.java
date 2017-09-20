@@ -7,7 +7,6 @@ import com.finogeeks.kernal.model.QueryRes;
 import com.finogeeks.kernal.model.Subscription;
 import com.finogeeks.kernal.model.frame.*;
 import com.finogeeks.kernal.pattern.dispatcher.Mediator;
-import com.finogeeks.optimization.export.Client;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -95,13 +94,13 @@ public class ClientCore implements CoreMethod {
     public Subscription queryAndSubscribe(String topic, String criteria, MessageHandler handler) {
         EnumTensor enumTensor = new EnumTensor();
         enumTensor.setP(pattern);
-        enumTensor.setM(Method.METHOD_UNQUERYSUB);
+        enumTensor.setM(Method.METHOD_QUERYSUB);
         Map<Key,Object> paramap = new HashMap<>();
         paramap.put(Key.TOPIC,topic);
         paramap.put(Key.CRITERIA,criteria);
         paramap.put(Key.MESSAGEHANDLER,handler);
         paramap.put(Key.CLIENT,client);
-        paramap.put(Key.METHOD,Method.METHOD_UNQUERYSUB);
+        paramap.put(Key.METHOD,Method.METHOD_QUERYSUB);
         enumTensor.setParam(paramap);
         Subscription subscription = (Subscription) Mediator.match(enumTensor);
         return subscription;
@@ -114,24 +113,46 @@ public class ClientCore implements CoreMethod {
         enumTensor.setM(Method.METHOD_CLOSE);
         Map<Key,Object> paramap = new HashMap<>();
         paramap.put(Key.CLIENT,client);
+        enumTensor.setParam(paramap);
         GeneralBoolean generalBoolean = (GeneralBoolean) Mediator.match(enumTensor);
         return generalBoolean;
     }
 
     @Override
-    public GenaralSpec unSub(Subscription subSeq) {
-        return null;
+    public GeneralBoolean unSub(Subscription subscription) {
+        EnumTensor enumTensor = new EnumTensor();
+        enumTensor.setP(pattern);
+        enumTensor.setM(Method.METHOD_UNSUB);
+        Map<Key,Object> paramap = new HashMap<>();
+        paramap.put(Key.CLIENT,client);
+        paramap.put(Key.SUBSCRIPTION,subscription);
+        enumTensor.setParam(paramap);
+        GeneralBoolean generalBoolean = (GeneralBoolean) Mediator.match(enumTensor);
+        return generalBoolean;
     }
 
     @Override
-    public GenaralSpec unQuerySub(Subscription querySubSeq) {
-        return null;
+    public GenaralSpec unQuerySub(Subscription subscription) {
+        EnumTensor enumTensor = new EnumTensor();
+        enumTensor.setP(pattern);
+        enumTensor.setM(Method.METHOD_UNQUERYSUB);
+        Map<Key,Object> paramap = new HashMap<>();
+        paramap.put(Key.CLIENT,client);
+        paramap.put(Key.SUBSCRIPTION,subscription);
+        enumTensor.setParam(paramap);
+        GeneralBoolean generalBoolean = (GeneralBoolean) Mediator.match(enumTensor);
+        return generalBoolean;
     }
 
     @Override
-    public GenaralSpec isSystemService() {
-
-        return null;
+    public GeneralBoolean isSystemService() {
+        EnumTensor enumTensor = new EnumTensor();
+        enumTensor.setP(pattern);
+        enumTensor.setM(Method.METHOD_ISSYSSERVICE);
+        Map<Key,Object> paramap = new HashMap<>();
+        paramap.put(Key.CLIENT,client);
+        GeneralBoolean generalBoolean = (GeneralBoolean) Mediator.match(enumTensor);
+        return generalBoolean;
     }
 
 }
