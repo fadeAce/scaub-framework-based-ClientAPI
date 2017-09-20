@@ -150,7 +150,7 @@ public class ClientCore implements CoreMethod {
         enumTensor.setP(pattern);
         enumTensor.setM(Method.METHOD_ISSYSSERVICE);
         Map<Key,Object> paramap = new HashMap<>();
-        paramap.put(Key.CLIENT,client);
+        paramap.put(Key.CLIENT,client);enumTensor.setParam(paramap);
         GeneralBoolean generalBoolean = (GeneralBoolean) Mediator.match(enumTensor);
         return generalBoolean;
     }

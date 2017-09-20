@@ -16,6 +16,7 @@ public class Handle implements GenaralSpec{
     public Handle(int handle){
         this.handle = handle;
         this.tag = true ;
+        this.terminator = new Terminator();
     }
 
     public Boolean getTag() {

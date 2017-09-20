@@ -49,6 +49,7 @@ public class LoopFixed implements MessageReceiver,Runnable{
                     //query-back func
                     String formatQS = dylibExecutor.GetTopicMessageFormat(topic,clientseq);
                     ml.execute(formatQS,msg);
+                    System.out.println(terminator.getQuerysub_ack());
                 }
                 break;
         }

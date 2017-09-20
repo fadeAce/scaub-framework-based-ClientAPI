@@ -104,7 +104,7 @@ public class PatternMulti implements PatternRouter,BaseTag {
         loopFixed.setHandle(subHandle.getHandle());
         loopFixed.setMethod(Method.METHOD_QUERYSUB);
         loopFixed.setMl((MessageHandler) paramap.get(Key.MESSAGEHANDLER));
-        loopFixed.setTerminator(new Terminator());
+        loopFixed.setTerminator(subHandle.getTerminator());
         loopFixed.setTopic((String)paramap.get(Key.TOPIC));
         loopFixed.setClientseq((Integer)paramap.get(Key.CLIENT));
         Thread querysubthread=new Thread(loopFixed);

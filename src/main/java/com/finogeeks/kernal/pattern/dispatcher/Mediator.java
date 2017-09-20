@@ -60,21 +60,23 @@ public class Mediator {
                         subscriptionS.setSubSeq(Method.METHOD_SUB,handleS.getHandle());
                         subscriptionS.setTerminator(handleS.getTerminator());
                         return subscriptionS;
-                    case METHOD_CLOSE:
-                        PatternMulti patternMultiC = new PatternMulti();
-                        Boolean bool=patternMultiC.Close(paramap);
-                        GeneralBoolean generalBoolean = new GeneralBoolean(Method.METHOD_CLOSE,Pattern.PATTERN_MULTI,bool);
-                        return generalBoolean;
-                    case METHOD_ISSYSSERVICE:
-                        PatternMulti patternMultiIS = new PatternMulti();
-                        patternMultiIS.checkService(paramap);
-                        return null;
                     case METHOD_QUERYSUB:
                         PatternMulti patternMultiQS = new PatternMulti();
                         Handle handleQS = patternMultiQS.querySub(paramap);
                         Subscription subscriptionQS = new Subscription();
                         subscriptionQS.setSubSeq(Method.METHOD_QUERYSUB,handleQS.getHandle());
-                        return null;
+                        subscriptionQS.setTerminator(handleQS.getTerminator());
+                        return subscriptionQS;
+                    case METHOD_CLOSE:
+                        PatternMulti patternMultiC = new PatternMulti();
+                        Boolean bool=patternMultiC.Close(paramap);
+                        GeneralBoolean generalBooleanC = new GeneralBoolean(Method.METHOD_CLOSE,Pattern.PATTERN_MULTI,bool);
+                        return generalBooleanC;
+                    case METHOD_ISSYSSERVICE:
+                        PatternMulti patternMultiIS = new PatternMulti();
+                        Boolean sys = patternMultiIS.checkService(paramap);
+                        GeneralBoolean generalBooleanI = new GeneralBoolean(Method.METHOD_ISSYSSERVICE,Pattern.PATTERN_MULTI,sys);
+                        return generalBooleanI;
                     case METHOD_UNSUB:
                         PatternMulti patternMultiUS = new PatternMulti();
                         patternMultiUS.unSub(paramap);
