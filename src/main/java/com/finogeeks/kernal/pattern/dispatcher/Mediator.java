@@ -60,6 +60,11 @@ public class Mediator {
                     case METHOD_UNQUERYSUB:
                         PatternMulti patternMultiQS = new PatternMulti();
                         patternMultiQS.querySub(paramap);
+                    case METHOD_CLOSE:
+                        PatternMulti patternMultiC = new PatternMulti();
+                        Boolean bool=patternMultiC.Close(paramap);
+                        GeneralBoolean generalBoolean = new GeneralBoolean(Method.METHOD_CLOSE,Pattern.PATTERN_MULTI,bool);
+                        return generalBoolean;
                 }
             case PATTERN_QUE:
                 switch(method){

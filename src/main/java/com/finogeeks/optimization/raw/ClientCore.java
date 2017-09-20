@@ -54,6 +54,7 @@ public class ClientCore implements CoreMethod {
 
     @Override
     public Subscription subscribe(String topic, String criteria, MessageHandler handler) {
+
         EnumTensor enumTensor = new EnumTensor();
         enumTensor.setP(pattern);
         enumTensor.setM(Method.METHOD_SUB);
@@ -64,6 +65,7 @@ public class ClientCore implements CoreMethod {
         paramap.put(Key.CLIENT,client);
         paramap.put(Key.METHOD,Method.METHOD_SUB);
         enumTensor.setParam(paramap);
+
         Subscription subscription = (Subscription) Mediator.match(enumTensor);
         return subscription;
     }
@@ -106,8 +108,14 @@ public class ClientCore implements CoreMethod {
     }
 
     @Override
-    public GenaralSpec close() {
-        return null;
+    public GeneralBoolean close() {
+        EnumTensor enumTensor = new EnumTensor();
+        enumTensor.setP(pattern);
+        enumTensor.setM(Method.METHOD_CLOSE);
+        Map<Key,Object> paramap = new HashMap<>();
+        paramap.put(Key.CLIENT,client);
+        GeneralBoolean generalBoolean = (GeneralBoolean) Mediator.match(enumTensor);
+        return generalBoolean;
     }
 
     @Override
@@ -122,6 +130,7 @@ public class ClientCore implements CoreMethod {
 
     @Override
     public GenaralSpec isSystemService() {
+
         return null;
     }
 

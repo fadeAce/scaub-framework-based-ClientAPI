@@ -31,22 +31,24 @@ public class LoopFixed implements MessageReceiver,Runnable{
                         break;
                     }
                     //query-back func
-                    ml.execute("",msg);
+                    String formatQ = dylibExecutor.GetTopicMessageFormat(topic,clientseq);
+                    ml.execute(formatQ,msg);
                 }
                 break;
             case METHOD_SUB:
                 while(terminator.getSub_ack()){
                     String msg =  dylibExecutor.RecvMessage(this.handle);
-                    String format = dylibExecutor.GetTopicMessageFormat(topic, clientseq);
                     //query-back func
-                    ml.execute("",msg);
+                    String formatS = dylibExecutor.GetTopicMessageFormat(topic,clientseq);
+                    ml.execute(formatS,msg);
                 }
                 break;
-            case METHOD_UNQUERYSUB:
+            case METHOD_QUERYSUB:
                 while(terminator.getQuerysub_ack()){
                     String msg =  dylibExecutor.RecvQueryAndSub(this.handle);
                     //query-back func
-                    ml.execute("",msg);
+                    String formatQS = dylibExecutor.GetTopicMessageFormat(topic,clientseq);
+                    ml.execute(formatQS,msg);
                 }
                 break;
         }

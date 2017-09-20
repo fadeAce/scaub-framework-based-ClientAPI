@@ -44,6 +44,8 @@ public class PatternMulti implements PatternRouter,BaseTag {
         Handle querHandle = (Handle) handleBinder.bindHandle(paramap);
         LoopFixed loopFixed = new LoopFixed();
         loopFixed.setHandle(querHandle.getHandle());
+        loopFixed.setClientseq((Integer) paramap.get(Key.CLIENT));
+        loopFixed.setTopic((String) paramap.get(Key.TOPIC));
         loopFixed.setMethod(Method.METHOD_QUERY);
         loopFixed.setMl((MessageHandler) paramap.get(Key.MESSAGEHANDLER));
         Thread querythread=new Thread(loopFixed);
@@ -69,6 +71,7 @@ public class PatternMulti implements PatternRouter,BaseTag {
         //E-H model
         HandleBinder handleBinder = new ThreadPatcher();
         Handle subHandle = (Handle) handleBinder.bindHandle(paramap);
+
         LoopFixed loopFixed = new LoopFixed();
         loopFixed.setHandle(subHandle.getHandle());
         loopFixed.setMethod(Method.METHOD_SUB);
@@ -78,6 +81,7 @@ public class PatternMulti implements PatternRouter,BaseTag {
         loopFixed.setClientseq((Integer)paramap.get(Key.CLIENT));
         Thread subthread=new Thread(loopFixed);
         subthread.start();
+
         return subHandle;
     }
 
@@ -97,7 +101,7 @@ public class PatternMulti implements PatternRouter,BaseTag {
         Handle subHandle = (Handle) handleBinder.bindHandle(paramap);
         LoopFixed loopFixed = new LoopFixed();
         loopFixed.setHandle(subHandle.getHandle());
-        loopFixed.setMethod(Method.METHOD_UNQUERYSUB);
+        loopFixed.setMethod(Method.METHOD_QUERYSUB);
         loopFixed.setMl((MessageHandler) paramap.get(Key.MESSAGEHANDLER));
         loopFixed.setTerminator(new Terminator());
         loopFixed.setTopic((String)paramap.get(Key.TOPIC));
@@ -105,5 +109,15 @@ public class PatternMulti implements PatternRouter,BaseTag {
         Thread querysubthread=new Thread(loopFixed);
         querysubthread.start();
         return subHandle;
+    }
+
+    public Boolean Close(Map<Key, Object> paramap){
+        try{
+            ((DylibExecutor)Mediator.getMultiVal(Key.MULTIEXECUTOR)).Close((Integer) paramap.get(Key.CLIENT));
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
